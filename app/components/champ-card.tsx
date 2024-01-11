@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Heading } from "@chakra-ui/react";
+import { Center, Flex, Heading } from "@chakra-ui/react";
 import ChampIcon from "./champ-icon";
 import champions from "../_data/champions";
 
