@@ -1,4 +1,4 @@
-import championsData from "./champion.json";
+import championsData from "./champions.json";
 
 class ChampionsData {
   type: string;
