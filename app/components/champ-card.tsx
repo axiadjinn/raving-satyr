@@ -14,7 +14,7 @@ function ChampCard({ championId }: { championId: string }) {
               </Center >
               <Center>
                 <Heading size="md">
-                  {championId ? champions.data[championId].name : '-'}
+                  {champions.data[championId]?.name ?? '-'}
                 </Heading>
               </Center>
             </>
