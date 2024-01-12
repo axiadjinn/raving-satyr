@@ -1,13 +1,13 @@
 import championsData from "./champions.json";
 
-class ChampionsData {
+type ChampionsData = {
   type: string;
   format: string;
   version: string;
   data: { [championId: string]: ChampionData };
 }
 
-class ChampionData {
+type ChampionData = {
   version: string;
   id: string;
   key: string;
@@ -21,11 +21,11 @@ class ChampionData {
   stats: ChampionStats;
 }
 
-class ChampionInfo {
+type ChampionInfo = {
   attack: number;
 }
 
-class ChampionImage {
+type ChampionImage = {
   full: string;
   sprite: string;
   group: string;
@@ -35,7 +35,7 @@ class ChampionImage {
   h: number
 }
 
-class ChampionStats {
+type ChampionStats = {
   hp: number;
   hpperlevel: number;
   mp: number;

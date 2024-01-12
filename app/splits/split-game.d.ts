@@ -1,4 +1,4 @@
-class SplitGame {
+type SplitGame = {
   id: string;
   opponent: string;
   opponentChampionId: string;

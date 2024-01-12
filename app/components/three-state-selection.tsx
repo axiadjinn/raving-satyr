@@ -1,6 +1,6 @@
 import { Button, ButtonGroup, Center } from "@chakra-ui/react";
 
-class ThreeStateSelectorProperties {
+type ThreeStateSelectorProperties = {
   selection: boolean | null;
   onStateChange: (state: boolean | null) => void;
   labelA?: string;
