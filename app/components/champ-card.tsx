@@ -22,7 +22,7 @@ function ChampCard({ championId }: { championId: string }) {
           : (
             <>
               < Center pe={2} >
-                <Box boxSize="60px" bgColor="gray700"></Box>
+                <Box boxSize="60px" bgColor="gray700" />
               </Center >
               <Center>
                 <Heading size="md">-</Heading>
