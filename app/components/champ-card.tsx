@@ -6,7 +6,7 @@ function ChampCard({ championId }: { championId: string }) {
   return (
     <Flex>
       <Center pe={2}>
-        <ChampIcon champion={championId} />
+        <ChampIcon championId={championId} />
       </Center>
       <Center>
         <Heading size="md">

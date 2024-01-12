@@ -10,7 +10,7 @@ function SplitInfo({ split }: { split: Split }) {
         <Text>Practice: {split.splitGames.length}/{split.splitTarget}</Text>
       </VStack>
       <Spacer></Spacer>
-      <ChampIcon champion={split.splitChamp} />
+      <ChampIcon championId={split.splitChamp} />
     </Flex>
   );
 }
