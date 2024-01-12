@@ -1,4 +1,4 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel } from "@chakra-ui/react";
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Heading } from "@chakra-ui/react";
 import SplitGameSummary from "./split-game-summary";
 import SplitGameDetails from "./split-game-details";
 
@@ -17,12 +17,12 @@ function SplitGameList({ splitGames, onUpdate }: { splitGames: SplitGame[], onUp
         splitGames.map((sg) => {
           return (
             <AccordionItem key={sg.id}>
-              <h3>
+              <Heading as="h3">
                 <AccordionButton>
                   <SplitGameSummary splitGame={sg} />
                   <AccordionIcon ms={1} />
                 </AccordionButton>
-              </h3>
+              </Heading>
               <AccordionPanel>
                 <SplitGameDetails splitGame={sg} onUpdate={(splitGame) => UpdateSplitGameInfo(splitGame)} />
               </AccordionPanel>
