@@ -14,7 +14,7 @@ function ChampIcon({ championId }: { championId: string }) {
           <Image boxSize="60px" src={imageRoute} alt={champion.name} />
         )
         : (
-          <Box boxSize="60px" bgColor="gray700"></Box>
+          <Box boxSize="60px" bgColor="gray700" />
         )
       }
     </Box>
