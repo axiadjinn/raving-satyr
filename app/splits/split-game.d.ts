@@ -3,5 +3,5 @@ type SplitGame = {
   opponent: string;
   opponentChampionId: string;
   win: boolean | null;
-  earlyGamePlanning: EarlyGamePlanning
-}
+  earlyGamePlanning: EarlyGamePlanning;
+};

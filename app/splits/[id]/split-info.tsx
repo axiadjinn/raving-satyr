@@ -6,8 +6,12 @@ function SplitInfo({ split }: { split: Split }) {
   return (
     <Flex w="full">
       <VStack spacing={1} alignItems="flex-start" justifyContent="center">
-        { split.splitChamp && <Heading size="md">{champions.data[split.splitChamp].name}</Heading> }
-        <Text>Practice: {split.splitGames.length}/{split.splitTarget}</Text>
+        {split.splitChamp && (
+          <Heading size="md">{champions.data[split.splitChamp].name}</Heading>
+        )}
+        <Text>
+          Practice: {split.splitGames.length}/{split.splitTarget}
+        </Text>
       </VStack>
       <Spacer></Spacer>
       <ChampIcon championId={split.splitChamp} />
