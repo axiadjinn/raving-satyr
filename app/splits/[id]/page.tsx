@@ -1,6 +1,15 @@
-'use client'
+"use client";
 
-import { Alert, AlertIcon, Box, Button, Container, Divider, Flex, VStack } from "@chakra-ui/react";
+import {
+  Alert,
+  AlertIcon,
+  Box,
+  Button,
+  Container,
+  Divider,
+  Flex,
+  VStack,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 import SplitGameList from "./split-game-list";
@@ -22,7 +31,7 @@ async function getSplit(_id: string): Promise<Split> {
           winlvl2: true,
           winlvl3: true,
           winlvl6: false,
-        }
+        },
       },
       {
         id: "2",
@@ -34,7 +43,7 @@ async function getSplit(_id: string): Promise<Split> {
           winlvl2: true,
           winlvl3: true,
           winlvl6: false,
-        }
+        },
       },
       {
         id: "3",
@@ -46,7 +55,7 @@ async function getSplit(_id: string): Promise<Split> {
           winlvl2: null,
           winlvl3: null,
           winlvl6: null,
-        }
+        },
       },
       {
         id: "4",
@@ -58,10 +67,10 @@ async function getSplit(_id: string): Promise<Split> {
           winlvl2: null,
           winlvl3: null,
           winlvl6: null,
-        }
+        },
       },
-    ]
-  }
+    ],
+  };
 }
 
 async function updateSplit(id: string, split: Split): Promise<Split> {
@@ -71,21 +80,25 @@ async function updateSplit(id: string, split: Split): Promise<Split> {
 }
 
 function ChampPracticeSplit({ params }: { params: { id: string } }) {
-  const [split, setSplit] = useState<Split>({ id: "", splitChamp: "", splitGames: [], splitTarget: 0 });
+  const [split, setSplit] = useState<Split>({
+    id: "",
+    splitChamp: "",
+    splitGames: [],
+    splitTarget: 0,
+  });
   const [changesPending, setChangesPending] = useState(false);
   const [showSaveNotification, setShowSaveNotification] = useState(false);
 
   useEffect(() => {
-    getSplit(params.id)
-      .then(split => {
-        setSplit(split);
-      });
+    getSplit(params.id).then((split) => {
+      setSplit(split);
+    });
   }, [params]);
 
   function onSplitGamesUpdate(splitGames: SplitGame[]) {
     setSplit({
       ...split,
-      splitGames: splitGames
+      splitGames: splitGames,
     });
 
     setChangesPending(true);
@@ -93,28 +106,44 @@ function ChampPracticeSplit({ params }: { params: { id: string } }) {
 
   function onSplitSave() {
     updateSplit(params.id, split)
-      .then(_ => {
+      .then((_) => {
         setShowSaveNotification(true);
         setChangesPending(false);
 
-        return new Promise(resolve => setTimeout(resolve, 5000));
+        return new Promise((resolve) => setTimeout(resolve, 5000));
       })
-      .then(_ => {
+      .then((_) => {
         setShowSaveNotification(false);
       });
   }
 
   return (
     <Container maxW="container.lg" p={0}>
-      { showSaveNotification && <Alert status="success"><AlertIcon />Split saved</Alert> }
+      {showSaveNotification && (
+        <Alert status="success">
+          <AlertIcon />
+          Split saved
+        </Alert>
+      )}
       <Flex h="100xh" py={4}>
-        <VStack w="full" h="full" p={5} spacing={2} alignItems="flex-start" bg="gray.50" boxShadow="md">
+        <VStack
+          w="full"
+          h="full"
+          p={5}
+          spacing={2}
+          alignItems="flex-start"
+          bg="gray.50"
+          boxShadow="md"
+        >
           <Box w="full">
             <SplitInfo split={split} />
             {changesPending && <Button onClick={onSplitSave}>Save</Button>}
           </Box>
           <Divider borderColor="gray.500"></Divider>
-          <SplitGameList splitGames={split.splitGames} onUpdate={onSplitGamesUpdate} />
+          <SplitGameList
+            splitGames={split.splitGames}
+            onUpdate={onSplitGamesUpdate}
+          />
         </VStack>
       </Flex>
     </Container>

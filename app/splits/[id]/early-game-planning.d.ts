@@ -3,4 +3,4 @@ type EarlyGamePlanning = {
   winlvl2: boolean | null;
   winlvl3: boolean | null;
   winlvl6: boolean | null;
-}
+};

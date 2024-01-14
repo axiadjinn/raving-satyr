@@ -1,24 +1,24 @@
-import type { Metadata } from 'next';
-import { Rubik } from 'next/font/google'
+import type { Metadata } from "next";
+import { Rubik } from "next/font/google";
 
-import './globals.css';
+import "./globals.css";
 import Navbar from "./components/navbar";
-import { Providers } from './providers';
+import { Providers } from "./providers";
 
 const rubik = Rubik({
-  subsets: ['latin'],
-  variable: '--font-rubik',
+  subsets: ["latin"],
+  variable: "--font-rubik",
 });
 
 export const metadata: Metadata = {
-  title: 'Champion practice tracker',
-  description: 'Track you practice with new champs',
-}
+  title: "Champion practice tracker",
+  description: "Track you practice with new champs",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -30,5 +30,5 @@ export default function RootLayout({
         </Providers>
       </body>
     </html>
-  )
+  );
 }
