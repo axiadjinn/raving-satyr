@@ -39,17 +39,17 @@ function ChampSelection({
       </FormControl>
       {champions.map((champion) => {
         return (
-          <Button
-            size="xl"
-            variant="ghost"
-            colorScheme="gray"
-            p={2}
-            onClick={() => onChampSelection(champion)}
-          >
-            <Box m={2}>
+          <Box>
+            <Button
+              size="xl"
+              variant="ghost"
+              colorScheme="gray"
+              p={2}
+              onClick={() => onChampSelection(champion)}
+            >
               <ChampCard championId={champion.id} key={champion.id} />
-            </Box>
-          </Button>
+            </Button>
+          </Box>
         );
       })}
     </span>
