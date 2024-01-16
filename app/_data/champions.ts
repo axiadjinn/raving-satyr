@@ -1,3 +1,3 @@
-import championsData from "./champions.json" with { type: "json" } ;
+import championsData from "./champions.json";
 
 export default championsData as ChampionsData;
