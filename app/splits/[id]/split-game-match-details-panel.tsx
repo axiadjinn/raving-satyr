@@ -18,27 +18,31 @@ import {
 
 function SplitGameMatchDetailsPanel({
   splitGame,
-  onUpdate,
+  onUpdate: handleUpdate,
 }: {
   splitGame: SplitGame;
   onUpdate: (splitGame: SplitGame) => void;
 }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isChampionSelectionModalOpen,
+    onOpen: onChampionSelectionModalOpen,
+    onClose: onChampionSelectionModalClose,
+  } = useDisclosure();
 
   function onWinChanged(win: boolean | null) {
-    onUpdate({
+    handleUpdate({
       ...splitGame,
       win: win,
     });
   }
 
   function onOppositeChampionSelected(championData: ChampionData) {
-    onUpdate({
+    handleUpdate({
       ...splitGame,
       opponentChampionId: championData.id,
     });
 
-    onClose();
+    onChampionSelectionModalClose();
   }
 
   return (
@@ -62,7 +66,7 @@ function SplitGameMatchDetailsPanel({
             variant="outline"
             colorScheme="red"
             p={2}
-            onClick={onOpen}
+            onClick={onChampionSelectionModalOpen}
           >
             <Box verticalAlign="middle" display="inline-block">
               <ChampCard championId={splitGame.opponentChampionId}></ChampCard>
@@ -70,15 +74,19 @@ function SplitGameMatchDetailsPanel({
           </Button>
         </Box>
       </VStack>
-      <Modal isOpen={isOpen} onClose={onClose} scrollBehavior="inside">
+      <Modal
+        isOpen={isChampionSelectionModalOpen}
+        onClose={onChampionSelectionModalClose}
+        scrollBehavior="inside"
+      >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader></ModalHeader>
+          <ModalHeader />
           <ModalCloseButton />
           <ModalBody>
             <ChampSelection onChampSelection={onOppositeChampionSelected} />
           </ModalBody>
-          <ModalFooter></ModalFooter>
+          <ModalFooter />
         </ModalContent>
       </Modal>
     </>
