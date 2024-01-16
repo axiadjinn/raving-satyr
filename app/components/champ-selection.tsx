@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ChampionsClient from "../_clients/champions-client/champions-client";
+
 import ChampCard from "./champ-card";
 import {
   Box,
@@ -9,21 +9,15 @@ import {
   HStack,
   Input,
 } from "@chakra-ui/react";
+import useChampionsClient from "../_clients/champions-client/champions-client";
 
 function ChampSelection({
   onChampSelection,
 }: {
   onChampSelection: (championData: ChampionData) => void;
 }) {
-  const [champions, setChampions] = useState<ChampionData[]>(
-    ChampionsClient.getChampionsArray(),
-  );
-
-  const [champSearchValue, setChampionSearchValue] = useState<string>("");
-
-  useEffect(() => {
-    setChampions(ChampionsClient.searchChampions(champSearchValue));
-  }, [champSearchValue]);
+  const { champions, championSearchValue, setChampionSearchValue } =
+    useChampionsClient();
 
   return (
     <span>
@@ -32,7 +26,7 @@ function ChampSelection({
           <FormLabel>Champion: </FormLabel>
           <Input
             placeholder="Champion name"
-            value={champSearchValue}
+            value={championSearchValue}
             onChange={(e) => setChampionSearchValue(e.target.value)}
           ></Input>
         </HStack>

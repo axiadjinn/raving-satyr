@@ -1,6 +1,7 @@
 type ChampionsClient = {
-  getChampion: (championId: string) => ChampionData;
-  getChampions: () => { [championId: string]: ChampionData };
-  getChampionsArray: () => ChampionData[];
-  searchChampions: (searchTerm: string) => ChampionData[];
+  champions: ChampionData[];
+  championSearchValue: string;
+  setChampionSearchValue: import("react").Dispatch<
+    import("react").SetStateAction<string>
+  >;
 };

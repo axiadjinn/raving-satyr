@@ -1,6 +1,7 @@
+import { useEffect, useState } from "react";
 import ChampionsData from "../../_data/champions";
 
-const _ChampionsClient: ChampionsClient = (() => {
+const useChampionsClient = (): ChampionsClient => {
   const allChampions = ChampionsData.data;
   const allChampionsArray = Object.values(allChampions);
 
@@ -25,12 +26,20 @@ const _ChampionsClient: ChampionsClient = (() => {
     return allChampionsArray;
   }
 
-  return {
-    getChampion,
-    getChampions,
-    getChampionsArray,
-    searchChampions,
-  };
-})();
+  const [champions, setChampions] =
+    useState<ChampionData[]>(getChampionsArray());
 
-export default _ChampionsClient;
+  const [championSearchValue, setChampionSearchValue] = useState("");
+
+  useEffect(() => {
+    setChampions(searchChampions(championSearchValue));
+  }, [championSearchValue]);
+
+  return {
+    champions,
+    championSearchValue,
+    setChampionSearchValue,
+  };
+};
+
+export default useChampionsClient;
