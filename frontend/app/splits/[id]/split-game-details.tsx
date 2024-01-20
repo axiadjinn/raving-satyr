@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Spacer, Text, VStack } from "@chakra-ui/react";
+import { Box, Flex, Spacer } from "@chakra-ui/react";
 import EarlyGamePlanningPanel from "./early-game-planning-panel";
 import SplitGameMatchDetailsPanel from "./split-game-match-details-panel";
 
